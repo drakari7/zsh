@@ -9,6 +9,7 @@ alias rg='rg -S'
 alias fs='cd ~/scripts'
 alias l='ls -l'
 alias la='ls -la'
+alias yz='yazi'
 
 # pacman aliases
 alias pss='pacman -Ss'
