@@ -11,7 +11,10 @@ miniplug plugin 'softmoth/zsh-vim-mode'
 miniplug load
 
 # Use starship for prompt
-eval "$(starship init zsh)"
+if whence -p starship >/dev/null; then
+    export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+    eval "$(starship init zsh)"
+fi
 
 # Enable colors
 autoload -U colors && colors
