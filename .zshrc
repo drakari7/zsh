@@ -70,13 +70,6 @@ bindkey -M menuselect 'l' vi-forward-char
 # Set wordchars to modify ctrl-w behavior
 export WORDCHARS='._-'
 
-#### Fzf initialisation and settings
-if whence -p fzf >/dev/null; then
-  source <(fzf --zsh)
-  export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-  export FZF_DEFAULT_OPTS='--height=70% --layout=reverse'
-fi
-
 # zsh-vim-mode configs
 MODE_CURSOR_VIINS="#ffffff blinking bar"
 MODE_CURSOR_REPLACE="$MODE_CURSOR_VIINS #ff0000"
@@ -87,5 +80,21 @@ MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
 
 # Miscellaneous (Maybe move to .zshenv)
 export PATH=~/scripts/:$PATH
+export PATH=~/bin/:$PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+
+# At the end because somehow ctrl-R was getting overwritten
+#### Fzf initialisation and settings
+if whence -p fzf >/dev/null; then
+  source <(fzf --zsh)
+  export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+  export FZF_DEFAULT_OPTS='--height=70% --layout=reverse'
+  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind=alt-j:down,alt-k:up"
+fi
+
+# fix fd colors in light mode
+export LS_COLORS=$(vivid generate solarized-light)
+
+. "$HOME/.local/bin/env"

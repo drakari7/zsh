@@ -2,14 +2,16 @@
 
 # general aliases
 alias 1='cd -'
-alias 2='git checkout -'
-alias gs=''
-alias p3='python3'
+alias 2='git switch -'
+alias p3='python3.12'
 alias rg='rg -S'
 alias fs='cd ~/scripts'
 alias l='ls -l'
 alias la='ls -la'
 alias yz='yazi'
+
+# fast cds
+alias bt='cd ~/bt'
 
 # pacman aliases
 alias pss='pacman -Ss'
@@ -21,6 +23,7 @@ alias ys='yay -S'
 
 # fzf aliases (require the definition of fzz command in scripts)
 alias nf='file=$(fzz) && nvim $file'
+alias lf='file=$(fzz) && less $file'
 alias bf='file=$(fzz) && bat $file'
 alias fcd='file=$(fd -td . | fzf) && cd $file'
 
@@ -28,6 +31,7 @@ alias fcd='file=$(fd -td . | fzf) && cd $file'
 alias gp='git push'
 alias gpu='git push -u origin'
 alias gl='git pull'
+alias gs='git switch'
 alias gsi='git submodule init'
 alias gss='git submodule sync'
 alias gsu='git submodule update'
@@ -38,7 +42,7 @@ alias gsp='git stash pop'
 alias gsd='git stash drop'
 alias gc='git commit --verbose'
 alias gcm='git commit --verbose -m'
-alias gco='git checkout'
+# alias gco='git checkout'
 alias gcom='git checkout main'
 alias gcb='git branch -a --contains HEAD'
 alias gadog='git log --graph --pretty=format:"%C(red)%h %C(yellow)%d %C(white)%s %C(green)%cr %C(bold blue)<%an>" --abbrev-commit'
