@@ -66,6 +66,7 @@ bindkey -M menuselect 'l' vi-forward-char
 [ -f "${ZDOTDIR}/aliasrc" ] && source "${ZDOTDIR}/aliasrc"
 [ -f ~/scripts/my_funcs.sh ] && source ~/scripts/my_funcs.sh
 [ -f ~/scripts/fzf_aliases ] && source ~/scripts/fzf_aliases
+[ -f "${ZDOTDIR}/experimental.zsh" ] && source "${ZDOTDIR}/experimental.zsh"
 
 # Set wordchars to modify ctrl-w behavior
 export WORDCHARS='._-'
