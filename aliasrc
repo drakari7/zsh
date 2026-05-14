@@ -2,13 +2,18 @@
 
 # general aliases
 alias 1='cd -'
-alias 2='git switch -'
+alias 2='git checkout -'
 alias p3='python3.12'
 alias rg='rg -S'
 alias fs='cd ~/scripts'
 alias l='ls -l'
 alias la='ls -la'
 alias yz='yazi'
+
+# cargo aliases
+alias cb='cargo build'
+alias ccl='cargo clippy'
+alias cch='cargo check'
 
 # fast cds
 alias bt='cd ~/bt'
