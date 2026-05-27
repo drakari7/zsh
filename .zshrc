@@ -12,7 +12,16 @@ miniplug load
 
 # Use starship for prompt
 if whence -p starship >/dev/null; then
-    export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+    _starship_style() {
+        local target
+        if (( COLUMNS < 100 )); then
+            target="$HOME/.config/starship/starship-compact.toml"
+        else
+            target="$HOME/.config/starship/starship.toml"
+        fi
+        [[ "$STARSHIP_CONFIG" != "$target" ]] && export STARSHIP_CONFIG="$target"
+    }
+    precmd_functions+=(_starship_style)
     eval "$(starship init zsh)"
 fi
 
@@ -95,7 +104,24 @@ if whence -p fzf >/dev/null; then
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind=alt-j:down,alt-k:up"
 fi
 
-# fix fd colors in light mode
-export LS_COLORS=$(vivid generate solarized-light)
+# set fd colors in light/dark mode
+set_ls_colors() {
+  local bg r
+  IFS=: read -t 0.1 -s -d $'\a' -p $'\e]11;?\a' bg < /dev/tty 2>/dev/null
+  if [[ $bg =~ rgb:([0-9a-f]+)/ ]]; then
+    r=$((16#${match[1]:0:2}))
+    if (( r >= 128 )); then
+      export LS_COLORS=$(vivid generate solarized-light)
+    else
+      export LS_COLORS=$(vivid generate solarized-dark)
+    fi
+  fi
+}
+set_ls_colors
 
 . "$HOME/.local/bin/env"
+
+# Fix ssh agent for ssh sessions
+if [ -z "$SSH_AUTH_SOCK" ] && [ -S "/run/user/$(id -u)/keyring/ssh" ]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
