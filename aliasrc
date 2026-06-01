@@ -29,10 +29,6 @@ alias syu='sudo pacman -Syu'
 alias yss='yay -Ss'
 alias ys='yay -S'
 
-# fzf aliases (require the definition of fzz command in scripts)
-alias nf='file=$(fzz) && nvim $file'
-alias lf='file=$(fzz) && less $file'
-alias bf='file=$(fzz) && bat $file'
 alias fcd='file=$(fd -td . | fzf) && cd $file'
 
 # Git aliases
@@ -42,6 +38,7 @@ alias gpu='git push -u origin'
 alias gl='git pull'
 alias gs='git switch'
 alias gsm='git switch master'
+alias gw='git worktree'
 
 alias gsi='git submodule init'
 alias gss='git submodule sync'
