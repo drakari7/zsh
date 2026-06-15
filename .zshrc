@@ -58,9 +58,6 @@ fi
 bindkey "^[[A" up-history
 bindkey "^[[B" down-history
 
-# Disable sgr escape sequences (makes man pages colorful)
-export GROFF_NO_SGR=1
-
 # Vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -77,8 +74,8 @@ bindkey -M menuselect 'l' vi-forward-char
 [ -f ~/scripts/fzf_aliases ] && source ~/scripts/fzf_aliases
 [ -f "${ZDOTDIR}/experimental.zsh" ] && source "${ZDOTDIR}/experimental.zsh"
 
-# Set wordchars to modify ctrl-w behavior
-export WORDCHARS='._-'
+# Adding ~/.local/bin/ binaries to the path
+[ -f "${HOME}/.local/bin/env" ] && source "${HOME}/.local/bin/env"
 
 # zsh-vim-mode configs
 MODE_CURSOR_VIINS="#ffffff blinking bar"
@@ -87,12 +84,6 @@ MODE_CURSOR_VICMD="white block"
 MODE_CURSOR_SEARCH="#ff00ff steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
-
-# Miscellaneous (Maybe move to .zshenv)
-export PATH=~/scripts/:$PATH
-export PATH=~/bin/:$PATH
-export EDITOR="nvim"
-export VISUAL="nvim"
 
 
 # At the end because somehow ctrl-R was getting overwritten
@@ -121,7 +112,6 @@ fi
 # set_ls_colors
 export LS_COLORS=$(vivid generate solarized-light)
 
-. "$HOME/.local/bin/env"
 
 # Fix ssh agent for ssh sessions
 if [ -z "$SSH_AUTH_SOCK" ] && [ -S "/run/user/$(id -u)/keyring/ssh" ]; then
