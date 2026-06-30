@@ -24,3 +24,5 @@ export WORDCHARS='_'
 # Disable sgr escape sequences (makes man pages colorful)
 export GROFF_NO_SGR=1
 
+# Better less defaults
+export LESS="-iR --mouse --incsearch -M"
