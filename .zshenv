@@ -25,4 +25,7 @@ export WORDCHARS='_'
 export GROFF_NO_SGR=1
 
 # Better less defaults
-export LESS="-iR --mouse --incsearch -M"
+export LESS="-iR --incsearch -M"
+
+# Terminal theme — flip this line to switch bat/delta previews light <-> dark
+export BAT_THEME="gruvbox-dark"   # light: gruvbox-light
