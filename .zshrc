@@ -85,7 +85,6 @@ MODE_CURSOR_SEARCH="#ff00ff steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
 
-
 # At the end because somehow ctrl-R was getting overwritten
 #### Fzf initialisation and settings
 if whence -p fzf >/dev/null; then
@@ -93,27 +92,4 @@ if whence -p fzf >/dev/null; then
   export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
   export FZF_DEFAULT_OPTS='--height=70% --layout=reverse'
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind=alt-j:down,alt-k:up"
-fi
-
-# set fd colors in light/dark mode
-# TODO: this fn doesnt work
-# set_ls_colors() {
-#   local bg r
-#   IFS=: read -t 0.1 -s -d $'\a' -p $'\e]11;?\a' bg < /dev/tty 2>/dev/null
-#   if [[ $bg =~ rgb:([0-9a-f]+)/ ]]; then
-#     r=$((16#${match[1]:0:2}))
-#     if (( r >= 128 )); then
-#       export LS_COLORS=$(vivid generate solarized-light)
-#     else
-#       export LS_COLORS=$(vivid generate solarized-dark)
-#     fi
-#   fi
-# }
-# set_ls_colors
-export LS_COLORS=$(vivid generate solarized-light)
-
-
-# Fix ssh agent for ssh sessions
-if [ -z "$SSH_AUTH_SOCK" ] && [ -S "/run/user/$(id -u)/keyring/ssh" ]; then
-  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
