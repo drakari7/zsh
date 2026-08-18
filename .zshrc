@@ -90,6 +90,6 @@ MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
 if whence -p fzf >/dev/null; then
   source <(fzf --zsh)
   export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-  export FZF_DEFAULT_OPTS='--height=70% --layout=reverse'
+  export FZF_DEFAULT_OPTS="--height=70% --layout=reverse --color=$FZF_COLOR_BASE"
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind=alt-j:down,alt-k:up"
 fi
