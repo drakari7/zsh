@@ -27,11 +27,15 @@ export THEME
 if [[ $THEME == light ]]; then
   export BAT_THEME="gruvbox-light"
   export DELTA_FEATURES="+theme-light"
-  export LS_COLORS="$(vivid generate gruvbox-light)"
+  _theme_vivid_scheme="gruvbox-light"
   export FZF_COLOR_BASE="light"
 else
   export BAT_THEME="gruvbox-dark"
   export DELTA_FEATURES="+theme-dark"
-  export LS_COLORS="$(vivid generate tokyonight-night)"
+  _theme_vivid_scheme="tokyonight-night"
   export FZF_COLOR_BASE="dark"
 fi
+
+# vivid is optional; without it LS_COLORS stays unset and ls uses its own defaults.
+(( $+commands[vivid] )) && export LS_COLORS="$(vivid generate $_theme_vivid_scheme)"
+unset _theme_vivid_scheme
