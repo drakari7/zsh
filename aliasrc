@@ -18,6 +18,8 @@ alias cch='cargo check'
 
 # claude
 alias ca='claude agents'
+alias cr='claude --resume'
+alias cl='claude'
 
 # fast cds
 alias bt='cd ~/bt'
