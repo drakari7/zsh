@@ -1,0 +1,16 @@
+# Global ripgrep defaults, loaded via $RIPGREP_CONFIG_PATH (set in .zshenv).
+# Applies to every rg call that inherits the env var
+# Bypass the whole file with `rg --no-config`.
+
+--smart-case
+--hidden
+
+# Ignore list
+# Later globs win, so `rg -g 'node_modules/**' foo` still lets you search into a pruned dir without --no-config.
+--glob=!.git/
+--glob=!.venv/
+--glob=!node_modules/
+--glob=!__pycache__/
+--glob=!.mypy_cache/
+--glob=!.pytest_cache/
+--glob=!*.min.js

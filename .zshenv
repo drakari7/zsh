@@ -17,6 +17,10 @@ export PATH=~/bin/:$PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# Global ripgrep args (prune globs, --hidden, --smart-case) — single source of
+# truth for every rg caller, including the ones nvim spawns.
+export RIPGREP_CONFIG_PATH="${ZDOTDIR}/ripgreprc"
+
 # Set wordchars to modify ctrl-w behavior. Only _ is treated as part of a word
 export WORDCHARS='_'
 

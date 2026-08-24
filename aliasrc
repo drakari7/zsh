@@ -4,7 +4,6 @@
 alias 1='cd -'
 alias 2='git checkout -'
 alias p3='python3.12'
-alias rg='rg -S'
 alias fs='cd ~/scripts'
 alias l='ls -l'
 alias la='ls -la'
