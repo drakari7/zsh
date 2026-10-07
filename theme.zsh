@@ -27,12 +27,12 @@ export THEME
 if [[ $THEME == light ]]; then
   export BAT_THEME="gruvbox-light"
   export DELTA_FEATURES="+theme-light"
-  _theme_vivid_scheme="gruvbox-light"
+  _theme_vivid_scheme="one-light"
   export FZF_COLOR_BASE="light"
 else
   export BAT_THEME="gruvbox-dark"
   export DELTA_FEATURES="+theme-dark"
-  _theme_vivid_scheme="tokyonight-night"
+  _theme_vivid_scheme="one-dark"
   export FZF_COLOR_BASE="dark"
 fi
 

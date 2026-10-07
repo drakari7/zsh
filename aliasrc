@@ -65,4 +65,5 @@ alias grv='git remote -v'
 # If eza exists replace ls with eza
 if whence -p eza >/dev/null; then
   alias ls='eza --group-directories-first'
+  alias tree='eza --tree'
 fi
